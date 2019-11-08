@@ -9,7 +9,7 @@
     >>> from spleeter.model.provider import github
     >>> provider = github.GithubModelProvider(
             'github.com',
-            'ivanko2k/New',
+            'Deezer/spleeter',
             'latest')
     >>> provider.download('2stems', '/path/to/local/storage')
 """
