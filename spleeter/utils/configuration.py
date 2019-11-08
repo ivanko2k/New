@@ -36,9 +36,9 @@ def load_configuration(descriptor):
     # Embedded configuration reading.
     if descriptor.startswith(_EMBEDDED_CONFIGURATION_PREFIX):
         name = descriptor[len(_EMBEDDED_CONFIGURATION_PREFIX):]
-        if not loader.is_resource(resources, f'{name}.json'):
+        if not loader.is_resource(resources, f'4stems.json'):
             raise ValueError(f'No embedded configuration {name} found')
-        with loader.open_text(resources, f'{name}.json') as stream:
+        with loader.open_text(resources, f'4stems.json') as stream:
             return json.load(stream)
     # Standard file reading.
     if not exists(descriptor):
