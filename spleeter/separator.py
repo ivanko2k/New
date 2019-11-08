@@ -7,7 +7,7 @@
     :Example:
 
     >>> from spleeter.separator import Separator
-    >>> separator = Separator('spleeter:4stems')
+    >>> separator = Separator('spleeter:2stems')
     >>> separator.separate(waveform, lambda instrument, data: ...)
     >>> separator.separate_to_file(...)
 """
