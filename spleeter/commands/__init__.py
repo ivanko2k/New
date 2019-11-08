@@ -31,7 +31,7 @@ OPT_OUTPUT = {
 # -p opt specification.
 OPT_PARAMS = {
     'dest': 'params_filename',
-    'default': 'spleeter:2stems',
+    'default': 'spleeter:4stems',
     'type': str,
     'action': 'store',
     'help': 'JSON filename that contains params'

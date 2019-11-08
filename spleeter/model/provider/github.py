@@ -11,7 +11,7 @@
             'github.com',
             'ivanko2k/New',
             'latest')
-    >>> provider.download('2stems', '/path/to/local/storage')
+    >>> provider.download('4stems', '/path/to/local/storage')
 """
 
 import tarfile
