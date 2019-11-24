@@ -47,7 +47,7 @@ setup(
     long_description_content_type='text/markdown',
     author='Deezer Research',
     author_email='research@deezer.com',
-    url='https://github.com/deezer/spleeter',
+    url='https://github.com/ivanko2k/New',
     license='MIT License',
     packages=[
         'spleeter',
