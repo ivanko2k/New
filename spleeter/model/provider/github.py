@@ -35,6 +35,7 @@ class GithubModelProvider(ModelProvider):
 
     LATEST_RELEASE = 'v1.4.0'
     RELEASE_PATH = 'releases/download'
+    CHECKSUM_INDEX = 'checksum.json'
 
     def __init__(self, host, repository, release):
         """ Default constructor.
