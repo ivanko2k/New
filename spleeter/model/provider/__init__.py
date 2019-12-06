@@ -38,12 +38,14 @@ class ModelProvider(ABC):
         """
         pass
 
-    def writeProbe(self, directory):
+    @staticmethod
+    def writeProbe(directory):
         """ Write a model probe file into the given directory.
 
         :param directory: Directory to write probe into.
         """
-        with open(join(directory, self.MODEL_PROBE_PATH), 'w') as stream:
+        probe = join(directory, ModelProvider.MODEL_PROBE_PATH)
+        with open(probe, 'w') as stream:
             stream.write('OK')
 
     def get(self, model_directory):
@@ -74,6 +76,6 @@ def get_default_model_provider():
     """
     from .github import GithubModelProvider
     host = environ.get('GITHUB_HOST', 'https://github.com')
-    repository = environ.get('GITHUB_REPOSITORY', 'ivanko2k/New')
+    repository = environ.get('GITHUB_REPOSITORY', 'deezer/spleeter')
     release = environ.get('GITHUB_RELEASE', GithubModelProvider.LATEST_RELEASE)
     return GithubModelProvider(host, repository, release)

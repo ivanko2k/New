@@ -1,30 +1,33 @@
 # =======================================================
-# Build script for distribution packaging.
+# Library lifecycle management.
 #
 # @author Deezer Research <research@deezer.com>
 # @licence MIT Licence
 # =======================================================
 
+FEEDSTOCK = spleeter-feedstock
+FEEDSTOCK_REPOSITORY = https://github.com/deezer/$(FEEDSTOCK)
+FEEDSTOCK_RECIPE = $(FEEDSTOCK)/recipe/spleeter/meta.yaml
+
+all: clean build test deploy
+
 clean:
 	rm -Rf *.egg-info
 	rm -Rf dist
 
-build:
-	@echo "=== Build CPU bdist package" 
-	@python3 setup.py sdist
-	@echo "=== CPU version checksum"
-	@openssl sha256 dist/*.tar.gz
+build: clean
+	sed -i "s/project_name = '[^']*'/project_name = 'spleeter'/g" setup.py
+	sed -i "s/tensorflow_dependency = '[^']*'/tensorflow_dependency = 'tensorflow'/g" setup.py
+	python3 setup.py sdist
 
-build-gpu:
-	@echo "=== Build GPU bdist package" 
-	@python3 setup.py sdist --target gpu
-	@echo "=== GPU version checksum"
-	@openssl sha256 dist/*.tar.gz
+build-gpu: clean
+	sed -i "s/project_name = '[^']*'/project_name = 'spleeter-gpu'/g" setup.py
+	sed -i "s/tensorflow_dependency = '[^']*'/tensorflow_dependency = 'tensorflow-gpu'/g" setup.py
+	python3 setup.py sdist
 
-upload:
-	twine upload dist/*
+test:
+	pytest -W ignore::FutureWarning -W ignore::DeprecationWarning -vv --forked
 
-test-upload:
-	twine upload --repository-url https://test.pypi.org/legacy/ dist/*
-
-all: clean build build-gpu upload
+deploy:
+	pip install twine
+	twine upload --skip-existing dist/*
