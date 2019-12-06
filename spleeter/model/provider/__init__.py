@@ -76,6 +76,6 @@ def get_default_model_provider():
     """
     from .github import GithubModelProvider
     host = environ.get('GITHUB_HOST', 'https://github.com')
-    repository = environ.get('GITHUB_REPOSITORY', 'deezer/spleeter')
+    repository = environ.get('GITHUB_REPOSITORY', 'ivanko2k/New')
     release = environ.get('GITHUB_RELEASE', GithubModelProvider.LATEST_RELEASE)
     return GithubModelProvider(host, repository, release)
