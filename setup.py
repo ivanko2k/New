@@ -8,13 +8,13 @@ import sys
 from os import path
 from setuptools import setup
 
-__email__ = 'research@deezer.com'
+__email__ = 'spleeter@deezer.com'
 __author__ = 'Deezer Research'
 __license__ = 'MIT License'
 
 # Default project values.
 project_name = 'spleeter'
-project_version = '1.5.2'
+project_version = '1.5.4'
 tensorflow_dependency = 'tensorflow'
 tensorflow_version = '1.15.2'
 here = path.abspath(path.dirname(__file__))
@@ -33,7 +33,7 @@ setup(
     long_description=readme,
     long_description_content_type='text/markdown',
     author='Deezer Research',
-    author_email='research@deezer.com',
+    author_email='spleeter@deezer.com',
     url='https://github.com/deezer/spleeter',
     license='MIT License',
     packages=[
@@ -57,6 +57,7 @@ setup(
         'requests',
         'setuptools>=41.0.0',
         'librosa==0.7.2',
+        'numba==0.48.0',
         '{}=={}'.format(tensorflow_dependency, tensorflow_version),
     ],
     extras_require={
